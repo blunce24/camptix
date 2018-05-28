@@ -1778,17 +1778,16 @@ class CampTix_Plugin {
 		<?php
 	}
 
-	function field_enable_select2( $args ) {
-	    ?>
-        <div id="tix-select2-enabled-radios">
-            <label class="tix-yes-no description"><input type="radio" name="<?php echo esc_attr( $args['name'] ); ?>" value="1" <?php checked( $args['value'], true ); ?>> <?php _e( 'Yes', 'camptix' ); ?></label>
-            <label class="tix-yes-no description"><input type="radio" name="<?php echo esc_attr( $args['name'] ); ?>" value="0" <?php checked( $args['value'], false ); ?>> <?php _e( 'No', 'camptix' ); ?></label>
-        </div>
+	function field_enable_select2( $args ) {?>
+		<div id="tix-select2-enabled-radios">
+			<label class="tix-yes-no description"><input type="radio" name="<?php echo esc_attr( $args['name'] ); ?>" value="1" <?php checked( $args['value'], true ); ?>> <?php _e( 'Yes', 'camptix' ); ?></label>
+			<label class="tix-yes-no description"><input type="radio" name="<?php echo esc_attr( $args['name'] ); ?>" value="0" <?php checked( $args['value'], false ); ?>> <?php _e( 'No', 'camptix' ); ?></label>
+		</div>
 		<?php if ( isset( $args['description'] ) ) : ?>
-            <p class="description"><?php echo wp_kses_post( $args['description'] ); ?></p>
+			<p class="description"><?php echo wp_kses_post( $args['description'] ); ?></p>
 		<?php endif; ?>
-        <?php
-    }
+		<?php
+	}
 
 	/**
 	 * The currency field for the Settings API.
@@ -2001,7 +2000,6 @@ class CampTix_Plugin {
 	 * Oh the holy admin menu!
 	 */
 	function admin_menu() {
-
 		add_submenu_page( 'edit.php?post_type=tix_ticket', __( 'Tools', 'camptix' ), __( 'Tools', 'camptix' ), $this->caps['manage_tools'], 'camptix_tools', array( $this, 'menu_tools' ) );
 		add_submenu_page( 'edit.php?post_type=tix_ticket', __( 'Setup', 'camptix' ), __( 'Setup', 'camptix' ), $this->caps['manage_options'], 'camptix_options', array( $this, 'menu_setup' ) );
 		remove_submenu_page( 'edit.php?post_type=tix_ticket', 'post-new.php?post_type=tix_ticket' );
@@ -5173,7 +5171,7 @@ class CampTix_Plugin {
 			return __( 'An error has occurred.', 'camptix' );
 		}
 
-		wp_enqueue_script( 'camptix' ); 		// js in footer
+		wp_enqueue_script( 'camptix' ); // js in footer
 		return $this->shortcode_contents;
 	}
 
